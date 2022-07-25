@@ -1,27 +1,28 @@
 const vacation = {
     _destination: {
         Brazil: ['Manaus', 'Rio de Janeiro', 'Sao Paulo'],
-        UEA: ['California', 'New York', 'Colorado'],
+        US: ['San Diego', 'New York', 'Pheonix'],
+        'United Kingdom': ['Londres', 'Leicester', 'Manchester']
     },
     _seasons: ['autumn', 'spring', 'summer', 'winter'],
-    _companies:['Fly Emirades', 'Codecademy Air', 'Full Stack Emirades'],
+    _airlines:['Fly Emirades', 'Codecademy Air', 'Full Stack Emirades'],
 
     getTrip(){
-        const countries = Object.keys(this._destination);
-        const cities = Object.values(this._destination);
-        const country = Math.floor(Math.random()*countries.length);
-        const city = Math.floor(Math.random()*cities[country].length);
-        return `${cities[country][city]} - ${countries[country]}` ;
+        const countriesArr = Object.keys(this._destination);
+        const citiesArr = Object.values(this._destination);
+        const countryIndex = Math.floor(Math.random()*countriesArr.length);
+        const cityIndex = Math.floor(Math.random()*citiesArr[countryIndex].length);
+        return `${citiesArr[countryIndex][cityIndex]} - ${countriesArr[countryIndex]}` ;
     },
     get seasons(){
         if(this._seasons){
             return this._seasons;
         }
     },
-    get companies(){
-        if(this._companies){
-            return this._companies;
-        }
+    get airlines(){
+        if(this._airlines){
+            return this._airlines;
+        };
     },
 }
 
@@ -33,13 +34,13 @@ const getSeason = (obj) =>{
     const season = obj.seasons[Math.floor(Math.random()*obj.seasons.length)];
     return season;
 }
-const getCompany = (obj) =>{
-    const company = obj.companies[Math.floor(Math.random()*obj.companies.length)]
-    return company
+const getAirline = (obj) =>{
+    const airline = obj.airlines[Math.floor(Math.random()*obj.airlines.length)]
+    return airline
 }
 
 const getVacation = (destiny, season, comp) =>{
     return `You should trip to: ${destiny} at next ${season}, go talk to ${comp}`
 }
 
-console.log(getVacation(getDestiny(vacation),getSeason(vacation), getCompany(vacation)));
+console.log(getVacation(getDestiny(vacation),getSeason(vacation), getAirline(vacation)));
