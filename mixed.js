@@ -1,39 +1,36 @@
-const ninja = {
-    _nomes: ['aranha', 'borboleta', 'cobra', 'dragao'],
-    _classes: ['mortal', 'silencioso', 'matador', 'agil'],
-    _alcunhas: ['dourado', 'noturno', 'lendario', 'da floresta'],
-    get nomes(){
-        if(this._nomes){
-            return this._nomes;
-        }
+const vacation = {
+    _destination: {
+        brazil: ['manaus', 'rio de janeiro', 'sao paulo'],
+        uea: ['california', 'new york', 'colorado'],
     },
-    get classes(){
-        if(this._classes){
-            return this._classes;
-        }
+    _seasons: ['autumn', 'fall', 'summer', 'winter'],
+
+    getTrip(){
+        const country = Math.floor(Math.random()*Object.keys(this._destination).length);
+        console.log(country);
+        console.log(this._destination.uea);
+        console.log(this._destination[0]);
+        const city = Math.floor(Math.random()*this._destination[country].length);
+        return `${this._destination[country][city]} - ${this._destination[country]}` ;
     },
-    get alcunhas(){
-        if(this._alcunhas){
-            return this._alcunhas;
+    get seasons(){
+        if(this._seasons){
+            return this._seasons;
         }
     },
 }
 
-const gerarNome = (obj) =>{
-    const nome = obj.nomes[Math.floor(Math.random()*obj.nomes.length)];
-    return nome;
+const getDestiny = (obj) =>{
+    const destiny = obj.getTrip();
+    return destiny;
 }
-const gerarClasse = (obj) =>{
-    const classe = obj.classes[Math.floor(Math.random()*obj.classes.length)];
-    return classe;
-}
-const gerarAlcunha = (obj) =>{
-    const alcunha = obj.alcunhas[Math.floor(Math.random()*obj.alcunhas.length)];
-    return alcunha;
+const getSeason = (obj) =>{
+    const season = obj.seasons[Math.floor(Math.random()*obj.seasons.length)];
+    return season;
 }
 
-const gerarNinja = (nome, classe, alcunha) =>{
-    return `Seu nome ninja é: ${nome} ${classe} ${alcunha}.`
+const getVacation = (destiny, season) =>{
+    return `You should trip to: ${destiny} at next ${season}.`
 }
 
-console.log(gerarNinja(gerarNome(ninja),gerarClasse(ninja),gerarAlcunha(ninja)));
+console.log(getVacation(getDestiny(vacation),getSeason(vacation)));
